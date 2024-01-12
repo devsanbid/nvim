@@ -11,8 +11,6 @@ keymap('i', "kj", "<ESC>")
 keymap('i', "jj", "<ESC>")
 
 -- buffer
-keymap('n', '<S-h>', ":bprev<cr>", opts)
-keymap('n', '<S-l>', ":bnext<cr>", opts)
 keymap('n', '<leader>c', ":bdelete<cr>", opts)
 
 -- file action
@@ -22,6 +20,9 @@ keymap('n', '<leader>q', ':q!<cr>', opts)
 -- up and down
 keymap('n', '<M-S-j>', '<C-d>zz')
 keymap('n', '<M-S-k>', '<C-u>zz')
+
+keymap('n', '<Up>', '8k',opts)
+keymap('n', '<Down>', '8j',opts)
 
 -- center while searching
 keymap('n', 'n', 'nzzzv')
@@ -59,17 +60,7 @@ keymap('n', "<leader>sh", ":e ~/.config/nv/lua/core/highlights.lua<cr>", opts)
 keymap('n', "<leader>sp", ":e ~/.config/nv/lua/plugins/init.lua<cr>", opts)
 
 
-vim.cmd("noremap <up> <nop>")
-vim.cmd("noremap <Down> <Nop>")
-vim.cmd("noremap <Left> <Nop>")
-vim.cmd("noremap <Right> <Nop>")
-vim.cmd("inoremap <Up> <Nop>")
-vim.cmd("inoremap <Down> <Nop>")
-vim.cmd("inoremap <Left> <Nop>")
-vim.cmd("inoremap <Right> <Nop>")
 vim.cmd("vnoremap im aBoV")
-vim.cmd("nnoremap J 5j")
-vim.cmd("nnoremap K 5k")
 vim.cmd('nnoremap "" vi"')
 vim.cmd("vnoremap am aBjoV")
 

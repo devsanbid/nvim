@@ -33,6 +33,7 @@ if not luasnip_status then
     return
 end
 
+luasnip.filetype_extend("typescriptreact", { "html" })
 require("luasnip/loaders/from_vscode").lazy_load()
 vim.opt.completeopt = "menu,menuone,noselect"
 
