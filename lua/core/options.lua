@@ -1,38 +1,54 @@
-vim.opt.guicursor = ""
+local opt = vim.opt
+opt.guicursor = ""
 
-vim.opt.nu = true
+opt.nu = true
 
-vim.opt.tabstop = 2
-vim.opt.softtabstop = 2
-vim.opt.shiftwidth = 2
-vim.opt.expandtab = true
-vim.opt.smartcase = true
-vim.opt.ignorecase = true
-vim.opt.showtabline = 0
-vim.opt.fillchars  = { eob = " "}
 
-vim.opt.smartindent = true
+opt.tabstop = 2
+opt.softtabstop = 2
+opt.shiftwidth = 2
+opt.expandtab = true
+opt.smartcase = true
+opt.ignorecase = true
+opt.showtabline = 0
+opt.fillchars  = { eob = " "}
+opt.linebreak = true
+opt.smartindent = true
+opt.wrap = false
+opt.showmode = false
+opt.cursorline = true
 
-vim.opt.wrap = false
+opt.swapfile = false
+opt.backup = false
+opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
+opt.wildmode = "longest:full,full" -- Command-line completion mode
+opt.winminwidth = 5 -- Minimum window width
+opt.undofile = true
+opt.undolevels = 10000
+opt.virtualedit = "block"
+opt.hlsearch = false
+opt.incsearch = true
 
-vim.opt.swapfile = false
-vim.opt.backup = false
-vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
-vim.opt.undofile = true
-vim.opt.undolevels = 10000
-vim.opt.virtualedit = "block"
-vim.opt.hlsearch = false
-vim.opt.incsearch = true
+opt.termguicolors = true
+opt.clipboard = "unnamedplus"
 
-vim.opt.termguicolors = true
-vim.opt.clipboard = "unnamedplus"
+opt.scrolloff = 16
+opt.signcolumn = "no"
+opt.isfname:append("@-@")
+opt.pumheight = 8
+opt.pumwidth = 5
+opt.mouse = ""
+opt.autowrite = true -- Enable auto write
+opt.formatoptions = "jcroqlnt" -- tcqj
+opt.grepprg = "rg --vimgrep"
+opt.pumblend = 10 -- Popup blend
+opt.showmode = false
+opt.sidescrolloff = 8 -- Columns of context
+opt.spelllang = { "en" }
 
-vim.opt.scrolloff = 16
-vim.opt.signcolumn = "no"
-vim.opt.isfname:append("@-@")
-vim.opt.pumheight = 8
-vim.opt.mouse = ""
 
-vim.opt.updatetime = 50
 
-vim.opt.colorcolumn = "80"
+
+opt.updatetime = 50
+
+opt.colorcolumn = "80"

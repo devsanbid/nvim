@@ -14,7 +14,7 @@ keymap('i', "jj", "<ESC>")
 keymap('n', '<leader>c', ":bdelete<cr>", opts)
 
 -- file action
-keymap('n', '<leader>w', ':wa<cr>', opts)
+keymap('n', '<leader>w', ':w<cr>', opts)
 keymap('n', '<leader>q', ':q!<cr>', opts)
 
 -- up and down
