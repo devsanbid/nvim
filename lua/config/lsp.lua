@@ -11,6 +11,18 @@ lspconfig.tsserver.setup({
     },
   },
 })
+vim.diagnostic.config({
+  underline = true,
+  virtual_text = {
+    spacing = 4,
+    source = "if_many",
+    prefix = "●",
+    -- this will set set the prefix to a function that returns the diagnostics icon based on the severity
+    -- this only works on a recent 0.10.0 build. Will be set to "●" when not supported
+    -- prefix = "icons",
+  },
+  severity_sort = true,
+})
 
 lspconfig.rust_analyzer.setup({
   -- Server-specific settings. See `:help lspconfig-setup`
@@ -75,7 +87,8 @@ end
 
 luasnip.filetype_extend("typescriptreact", { "html" })
 require("luasnip/loaders/from_vscode").lazy_load()
-vim.opt.completeopt = "menu,menuone,noselect"
+
+vim.opt.completeopt = "menu,menuone,noinsert"
 
 -- Add parentheses after selecting function or method item
 local cmp_autopairs = require("nvim-autopairs.completion.cmp")
