@@ -21,8 +21,6 @@ return {
         -- },
         -- formatting.eslint,
         null_ls.builtins.diagnostics.flake8,
-        -- diagnostics.flake8,
-        null_ls.builtins.completion.spell,
       },
     }
   end

@@ -135,6 +135,7 @@ cmp.setup({
   sources = cmp.config.sources({
     { name = "nvim_lsp", priority = 1000 }, -- LSP
     { name = "luasnip" },                   -- snippets
+   --  { name = 'ultisnips' },                 -- For ultisnips users.
     { name = "buffer" },                    -- text within the current buffer
     { name = "path" },                      -- file system paths
   }),
