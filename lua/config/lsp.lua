@@ -12,7 +12,7 @@ lspconfig.rust_analyzer.setup {
         loadOutDirsFromCheck = true,
         runBuildScripts = true,
       },
-      -- Add clippy lints for Rust.
+      -- Add clippy lints for Rust
       checkOnSave = {
         allFeatures = true,
         command = "clippy",
@@ -66,7 +66,39 @@ luasnip.filetype_extend("typescriptreact", { "html" })
 require("luasnip/loaders/from_vscode").lazy_load()
 vim.opt.completeopt = "menu,menuone,noselect"
 
+-- Add parentheses after selecting function or method item
+local cmp_autopairs = require('nvim-autopairs.completion.cmp')
+cmp.event:on(
+  'confirm_done',
+  cmp_autopairs.on_confirm_done()
+)
+
+
+-- disable cmp in comment
 cmp.setup({
+  enabled = function()
+    -- disable completion in comments
+    local context = require 'cmp.config.context'
+    -- keep command mode completion enabled when cursor is in a comment
+    if vim.api.nvim_get_mode().mode == 'c' then
+      return true
+    else
+      return not context.in_treesitter_capture("comment")
+          and not context.in_syntax_group("Comment")
+    end
+  end
+})
+
+cmp.setup({
+  formatting = {
+    fields = { "abbr", "kind" },
+    format = function(_, vim_item)
+      vim_item.menu = ""
+      --vim_item.kind = ""
+      --vim_item.abbr = ""
+      return vim_item
+    end,
+  },
   snippet = {
     expand = function(args)
       luasnip.lsp_expand(args.body)
@@ -101,9 +133,9 @@ cmp.setup({
     end, { "i", "s" }),
   }),
   sources = cmp.config.sources({
-    { name = "nvim_lsp" }, -- LSP
-    { name = "luasnip" },  -- snippets
-    { name = "buffer" },   -- text within the current buffer
-    { name = "path" },     -- file system paths
+    { name = "nvim_lsp", priority = 1000 }, -- LSP
+    { name = "luasnip" },                   -- snippets
+    { name = "buffer" },                    -- text within the current buffer
+    { name = "path" },                      -- file system paths
   }),
 })

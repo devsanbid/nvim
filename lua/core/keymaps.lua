@@ -1,5 +1,5 @@
 local keymap = vim.keymap.set
-local opts = { silent = true }
+local opts = { noremap = true, silent = true }
 vim.g.mapleader = " "
 
 --remove keymap default i hate that
@@ -7,8 +7,19 @@ keymap('v', "<S-j>", "<Nop>")
 
 -- navigation
 keymap('i', "jk", "<ESC>")
+keymap('i', "JK", "<ESC>")
 keymap('i', "kj", "<ESC>")
 keymap('i', "jj", "<ESC>")
+
+keymap("x", "p", [["_dP]])
+
+keymap({ "n", "x" }, "j", "gj", opts)
+keymap({ "n", "x" }, "k", "gk", opts)
+
+keymap("n", "*", "*zz", opts)
+keymap("n", "#", "#zz", opts)
+keymap("n", "g*", "g*zz", opts)
+keymap("n", "g#", "g#z", opts)
 
 -- buffer
 keymap('n', '<leader>c', ":bdelete<cr>", opts)
@@ -21,8 +32,8 @@ keymap('n', '<leader>q', ':q!<cr>', opts)
 keymap('n', '<M-S-j>', '<C-d>zz')
 keymap('n', '<M-S-k>', '<C-u>zz')
 
-keymap('n', '<Up>', '8k',opts)
-keymap('n', '<Down>', '8j',opts)
+keymap('n', '<Up>', '8k', opts)
+keymap('n', '<Down>', '8j', opts)
 
 -- center while searching
 keymap('n', 'n', 'nzzzv')
@@ -63,4 +74,3 @@ keymap('n', "<leader>sp", ":e ~/.config/nv/lua/plugins/init.lua<cr>", opts)
 vim.cmd("vnoremap im aBoV")
 vim.cmd('nnoremap "" vi"')
 vim.cmd("vnoremap am aBjoV")
-
