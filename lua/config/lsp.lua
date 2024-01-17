@@ -1,12 +1,26 @@
 -- Use lsp_zero to manage lsp attachments.
-local lsp_zero = require('lsp-zero')
+local lsp_zero = require("lsp-zero")
 lsp_zero.extend_lspconfig()
-local lspconfig = require('lspconfig')
+local lspconfig = require("lspconfig")
 
-lspconfig.rust_analyzer.setup {
+lspconfig.tsserver.setup({
+  settings = {
+    documentformatting = false,
+    diagnostics = {
+      enable = false,
+    },
+  },
+})
+
+lspconfig.rust_analyzer.setup({
   -- Server-specific settings. See `:help lspconfig-setup`
   settings = {
-    ['rust-analyzer'] = {
+    ["rust-analyzer"] = {
+      diagnostics = {
+        enable = true,
+        disabled = { "unresolved-proc-macro" },
+        enableExperimental = true,
+      },
       cargo = {
         allFeatures = true,
         loadOutDirsFromCheck = true,
@@ -25,26 +39,23 @@ lspconfig.rust_analyzer.setup {
           ["napi-derive"] = { "napi" },
           ["async-recursion"] = { "async_recursion" },
         },
-      }
+      },
     },
   },
-
-}
-
+})
 
 lsp_zero.on_attach(function(_, bufnr)
   lsp_zero.default_keymaps({ buffer = bufnr })
 end)
 
-
 -- Setup Mason and Mason-Config.
-require('mason').setup({})
-require('mason-lspconfig').setup({
+require("mason").setup({})
+require("mason-lspconfig").setup({
   handlers = {
     lsp_zero.default_setup,
     lua_ls = function()
       local lua_opts = lsp_zero.nvim_lua_ls()
-      require('lspconfig').lua_ls.setup(lua_opts)
+      require("lspconfig").lua_ls.setup(lua_opts)
     end,
   },
 })
@@ -67,26 +78,21 @@ require("luasnip/loaders/from_vscode").lazy_load()
 vim.opt.completeopt = "menu,menuone,noselect"
 
 -- Add parentheses after selecting function or method item
-local cmp_autopairs = require('nvim-autopairs.completion.cmp')
-cmp.event:on(
-  'confirm_done',
-  cmp_autopairs.on_confirm_done()
-)
-
+local cmp_autopairs = require("nvim-autopairs.completion.cmp")
+cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
 
 -- disable cmp in comment
 cmp.setup({
   enabled = function()
     -- disable completion in comments
-    local context = require 'cmp.config.context'
+    local context = require("cmp.config.context")
     -- keep command mode completion enabled when cursor is in a comment
-    if vim.api.nvim_get_mode().mode == 'c' then
+    if vim.api.nvim_get_mode().mode == "c" then
       return true
     else
-      return not context.in_treesitter_capture("comment")
-          and not context.in_syntax_group("Comment")
+      return not context.in_treesitter_capture("comment") and not context.in_syntax_group("Comment")
     end
-  end
+  end,
 })
 
 cmp.setup({
@@ -121,7 +127,7 @@ cmp.setup({
         fallback()
       end
     end, { "i", "s" }),
-    ['<CR>'] = cmp.mapping.confirm({ select = true }),
+    ["<CR>"] = cmp.mapping.confirm({ select = true }),
     ["<S-Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_prev_item()
@@ -134,9 +140,9 @@ cmp.setup({
   }),
   sources = cmp.config.sources({
     { name = "nvim_lsp", priority = 1000 }, -- LSP
-    { name = "luasnip" },                   -- snippets
-   --  { name = 'ultisnips' },                 -- For ultisnips users.
-    { name = "buffer" },                    -- text within the current buffer
-    { name = "path" },                      -- file system paths
+    { name = "luasnip" },                 -- snippets
+    --  { name = 'ultisnips' },                 -- For ultisnips users.
+    { name = "buffer" },                  -- text within the current buffer
+    { name = "path" },                    -- file system paths
   }),
 })

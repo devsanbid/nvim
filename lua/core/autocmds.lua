@@ -21,6 +21,12 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.keymap.set("n", "q", "<cmd>close<cr>", { buffer = event.buf, silent = true })
   end,
 })
+-- Highlight the region on yank
+vim.api.nvim_create_autocmd('TextYankPost', {
+    callback = function()
+        vim.highlight.on_yank({ higroup = 'Visual', timeout = 120 })
+    end,
+})
 
 vim.api.nvim_create_autocmd({ "BufWritePre" }, {
   callback = function(event)
