@@ -17,9 +17,6 @@ vim.diagnostic.config({
     spacing = 4,
     source = "if_many",
     prefix = "●",
-    -- this will set set the prefix to a function that returns the diagnostics icon based on the severity
-    -- this only works on a recent 0.10.0 build. Will be set to "●" when not supported
-    -- prefix = "icons",
   },
   severity_sort = true,
 })
@@ -99,6 +96,10 @@ cmp.setup({
   enabled = function()
     -- disable completion in comments
     local context = require("cmp.config.context")
+    buftype = vim.api.nvim_buf_get_option(0, "buftype")
+    if buftype == "prompt" then
+      return false
+    end
     -- keep command mode completion enabled when cursor is in a comment
     if vim.api.nvim_get_mode().mode == "c" then
       return true
