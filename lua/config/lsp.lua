@@ -37,7 +37,8 @@ lspconfig.rust_analyzer.setup({
       },
       -- Add clippy lints for Rust
       checkOnSave = {
-        allFeatures = true,
+        enable = false,
+        allFeatures = false,
         command = "clippy",
         extraArgs = { "--no-deps" },
       },

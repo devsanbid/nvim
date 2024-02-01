@@ -18,6 +18,7 @@ return {
         formatting.clang_format,
         formatting.jq,
         formatting.rustywind,
+        formatting.prettier,
         code_actions.ts_node_action,
         formatting.biome.with({
 					args = {

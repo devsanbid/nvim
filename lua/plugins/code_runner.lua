@@ -17,7 +17,7 @@ return {
         c = {
           "cdx $dir &&",
           "gcc $fileName",
-          "-o $fileNameWithoutExt &&",
+          "-o $dir/$fileNameWithoutExt &&",
           "$dir/$fileNameWithoutExt",
         },
         typescriptreact = "bun",

@@ -8,6 +8,7 @@ keymap("v", "<S-j>", "<Nop>")
 -- navigation
 keymap("i", "jk", "<ESC>")
 keymap("i", "JK", "<ESC>")
+keymap("i", "Jk", "<ESC>")
 keymap("i", "kj", "<ESC>")
 keymap("i", "jj", "<ESC>")
 
