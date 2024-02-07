@@ -17,9 +17,16 @@ return {
         c = {
           "cdx $dir &&",
           "gcc $fileName",
-          "-o $dir/$fileNameWithoutExt &&",
-          "$dir/$fileNameWithoutExt",
+          "-o $dir/$fileNameWithoutExt.out &&",
+          "$dir/$fileNameWithoutExt.out",
         },
+        cpp = {
+          "cdx $dir &&",
+          "g++ $fileName",
+          "-o $dir/$fileNameWithoutExt.out &&",
+          "$dir/$fileNameWithoutExt.out",
+        },
+
         typescriptreact = "bun",
         rust = "cargo run -q",
         markdown = {

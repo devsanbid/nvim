@@ -19,6 +19,7 @@ hi(0, "CmpItemKindMethod", { link = "CmpItemKindFunction" })
 hi(0, "CmpItemKindKeyword", { bg = "NONE", fg = "#D4D4D4" })
 hi(0, "CmpItemKindProperty", { link = "CmpItemKindKeyword" })
 hi(0, "CmpItemKindUnit", { link = "CmpItemKindKeyword" })
+hi(0, "ColorColumn", { bg = "gray" })
 
 local transparent_hightlight = {
   "TelescopePromptNormal",
@@ -31,7 +32,6 @@ local transparent_hightlight = {
   "lualine_a_command",
   "lualine_b_command",
 }
-
 
 for _, items in pairs(transparent_hightlight) do
   vim.cmd.hi(items .. " guibg=none")
