@@ -35,7 +35,6 @@ return {
         --   -- extra_args = { "--no-semi", "--single-quote", "--jsx-single-quote" },
         -- },
         formatting.rustfmt,
-        null_ls.builtins.diagnostics.flake8,
       },
     })
   end,

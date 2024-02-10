@@ -26,20 +26,6 @@ keymap("n", "#", "#zz", opts)
 keymap("n", "g*", "g*zz", opts)
 keymap("n", "g#", "g#z", opts)
 
--- buffer
-keymap("n", "<leader>c", ":bdelete<cr>", opts)
-
--- file action
-keymap("n", "<leader>w", ":w<cr>", opts)
-keymap("n", "<leader>q", ":q!<cr>", opts)
-
--- up and down
-keymap("n", "<M-S-j>", "<C-d>zz")
-keymap("n", "<M-S-k>", "<C-u>zz")
-
-keymap("n", "<Up>", "8k", opts)
-keymap("n", "<Down>", "8j", opts)
-
 -- center while searching
 keymap("n", "n", "nzzzv")
 keymap("n", "N", "Nzzzv")
@@ -49,7 +35,7 @@ keymap("n", "<leader>rw", [[:%s/\<<C-r><C-w>\>//gI<Left><Left><Left>]])
 --telescope
 keymap("n", "<leader>ff", ":Telescope find_files<cr>", opts)
 keymap("n", "<leader><leader>", ":Telescope find_files<cr>", opts)
-keymap("n", "<leader>fg", ":Telescope live_grep<cr>", opts)
+keymap("n", "<leader>fw", ":Telescope live_grep<cr>", opts)
 keymap("n", "<leader>fH", ":Telescope help_tags<cr>", opts)
 keymap("n", "<leader>fr", ":Telescope oldfiles<cr>", opts)
 keymap("n", "<leader>fh", ":Telescope highlights<cr>", opts)
