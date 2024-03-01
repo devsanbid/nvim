@@ -16,17 +16,29 @@ keymap("n", "<leader>jm", ":NodeAction<cr>")
 keymap("n", "<leader>jj", ":TSJToggle<cr>")
 keymap("x", "p", [["_dP]])
 
--- keymap("n", "<C-k>", "<cmd>cnext<CR>zz")
--- keymap("n", "<C-j>", "<cmd>cprev<CR>zz")
--- keymap("n", "<leader>k", "<cmd>lnext<CR>zz")
--- keymap("n", "<leader>j", "<cmd>lprev<CR>zz")
+keymap("n", "<C-z>", "<cmd>cnext<CR>zz")
+keymap("n", "<C-S-z>", "<cmd>cprev<CR>zz")
+keymap("n", "zz", "<cmd>QuickFix<CR>")
+
+-- keymap trouble
+keymap("n", "<leader>tt", function()
+  require("trouble").toggle()
+end)
+
+keymap("n", "<leader>td", ":Trouble document_diagnostics<cr>")
+keymap("n", "<leader>tq", ":Trouble quickfix<cr>")
+
+keymap("n", "<leader>tn", function()
+  require("trouble").next({ skip_groups = true, jump = true })
+end)
+keymap("n", "<leader>tp", function()
+  require("trouble").previous({ skip_groups = true, jump = true })
+end)
 
 keymap({ "n", "x" }, "j", "gj", opts)
 keymap({ "n", "x" }, "k", "gk", opts)
 
 keymap("n", "*", "*zz", opts)
-keymap("n", "<C-z>", "*zz", opts)
-keymap("n", "<C-S-z>", "#zz", opts)
 keymap("n", "g*", "g*zz", opts)
 keymap("n", "g#", "g#z", opts)
 
@@ -61,11 +73,10 @@ keymap("n", "<leader>fH", ":Telescope help_tags<cr>", opts)
 keymap("n", "<leader>fr", ":Telescope oldfiles<cr>", opts)
 keymap("n", "<leader>fh", ":Telescope highlights<cr>", opts)
 
-
 keymap("n", "<leader>ac", function()
   vim.ui.input({ prompt = "Enter your commit message" }, function(input)
     vim.cmd("Git add .")
-    local commit_message = "Git commit -m " .. input .. "."
+    local commit_message = "Git commit -m '" .. input .. "' ."
     vim.cmd(commit_message)
     print("Done commit")
   end)
@@ -104,6 +115,7 @@ keymap("n", "<leader>so", ":e ~/.config/nv/lua/core/options.lua<cr>", opts)
 keymap("n", "<leader>sa", ":e ~/.config/nv/lua/core/autocmds.lua<cr>", opts)
 keymap("n", "<leader>sh", ":e ~/.config/nv/lua/core/highlight.lua<cr>", opts)
 keymap("n", "<leader>sp", ":e ~/.config/nv/lua/plugins/init.lua<cr>", opts)
+keymap("n", "<leader>sc", ":e ~/.config/nv/lua/core/commands.lua<cr>", opts)
 
 vim.cmd("vnoremap im aBoV")
 vim.cmd('nnoremap "" vi"')
