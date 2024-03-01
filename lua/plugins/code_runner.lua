@@ -14,6 +14,7 @@ return {
         typescript = "bun",
         javascript = "bun",
         reactjavascript = "bun",
+        go = "go run $fileName",
         c = {
           "cdx $dir &&",
           "gcc $fileName",

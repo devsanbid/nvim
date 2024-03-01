@@ -1,6 +1,9 @@
 local hi = vim.api.nvim_set_hl
+
 hi(0, "NeoTreeSignColumn", { bg = "#1e1e2e" })
-hi(0, "MatchParen", { bg = "none", fg = "green" })
+hi(0, "@type.builtin", { bold = false, fg = "#FF7276" })
+
+hi(0, "MatchParen", { bg = "none", fg = "yellow" })
 hi(0, "Visual", { bg = "#1e1e2e" })
 hi(0, "Pmenu", { bg = "#1e1e2e" })
 -- gray
@@ -31,6 +34,10 @@ local transparent_hightlight = {
   "lualine_c_command",
   "lualine_a_command",
   "lualine_b_command",
+  "DiagnosticVirtualTextError",
+  "DiagnosticVirtualTextWarn",
+  "DiagnosticVirtualTextInfo",
+  "DiagnosticVirtualTextOk",
 }
 
 for _, items in pairs(transparent_hightlight) do

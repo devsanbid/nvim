@@ -3,3 +3,5 @@ require("core.options")
 require("core.autocmds")
 require("core.utils")
 
+vim.diagnostic.config({ underline = false })
+
