@@ -61,7 +61,42 @@ keymap("n", "<leader>fH", ":Telescope help_tags<cr>", opts)
 keymap("n", "<leader>fr", ":Telescope oldfiles<cr>", opts)
 keymap("n", "<leader>fh", ":Telescope highlights<cr>", opts)
 
--- lsp
+--git
+keymap("n", "<leader>aa", function()
+  vim.cmd.Git("add .")
+  print("Added!!")
+end)
+
+
+keymap("n", "<leader>ac", function()
+  vim.ui.input({ prompt = "Enter your commit message" }, function(input)
+    vim.cmd("Git add %")
+    local commit_message = "Git commit -m " .. input .. "%"
+    print(commit_message)
+    vim.cmd(commit_message)
+    print("Added files and committed with message:", input)
+  end)
+end)
+
+keymap("n", "<leader>aC", function()
+  vim.ui.input({ prompt = "Enter your commit message" }, function(input)
+    vim.cmd("Git add .")
+    local commit_message = "Git commit -m " .. input .. "."
+    print(commit_message)
+    vim.cmd(commit_message)
+    print("Added all files and committed with message:", input)
+  end)
+end)
+
+
+keymap("n", "<leader>ap", function ()
+  vim.cmd.Git("push")
+end)
+
+keymap("n", "<leader>aP", function ()
+  vim.cmd.Git("pull")
+end)
+
 keymap("n", "<leader>lf", function()
   vim.lsp.buf.format()
 end, opts)
