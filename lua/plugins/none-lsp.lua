@@ -16,7 +16,6 @@ return {
         formatting.stylua,
         formatting.black,
         formatting.clang_format,
-        formatting.jq,
         formatting.rustywind,
         formatting.prettier,
         code_actions.ts_node_action,
@@ -34,7 +33,6 @@ return {
         --   extra_filetypes = { "toml" },
         --   -- extra_args = { "--no-semi", "--single-quote", "--jsx-single-quote" },
         -- },
-        formatting.rustfmt,
       },
     })
   end,

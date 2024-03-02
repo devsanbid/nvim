@@ -32,36 +32,14 @@ return {
             ["al"] = { query = "@loop.outer", desc = "Select outer part of a loop" },
             ["il"] = { query = "@loop.inner", desc = "Select inner part of a loop" },
 
-            ["af"] = { query = "@call.outer", desc = "Select outer part of a function call" },
-            ["if"] = { query = "@call.inner", desc = "Select inner part of a function call" },
-
-            ["am"] = {
-              query = "@function.outer",
-              desc = "Select outer part of a method/function definition",
-            },
-            ["im"] = {
-              query = "@function.inner",
-              desc = "Select inner part of a method/function definition",
-            },
+            ["af"] = { query = "@function.outer", desc = "Select outer part of a function call" },
+            ["if"] = { query = "@function.inner", desc = "Select inner part of a function call" },
 
             ["ac"] = { query = "@class.outer", desc = "Select outer part of a class" },
             ["ic"] = { query = "@class.inner", desc = "Select inner part of a class" },
 
             ["a/"] = { query = "@comment.outer", desc = "Select outer part of a comment" },
             ["i/"] = { query = "@comment.inner", desc = "Select inner part of a comment" },
-          },
-        },
-        swap = {
-          enable = true,
-          swap_next = {
-            ["<leader>na"] = "@parameter.inner", -- swap parameters/argument with next
-            ["<leader>n:"] = "@property.outer", -- swap object property with next
-            ["<leader>nm"] = "@function.outer", -- swap function with next
-          },
-          swap_previous = {
-            ["<leader>pa"] = "@parameter.inner", -- swap parameters/argument with prev
-            ["<leader>p:"] = "@property.outer", -- swap object property with prev
-            ["<leader>pm"] = "@function.outer", -- swap function with previous
           },
         },
       },

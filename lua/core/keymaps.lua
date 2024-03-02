@@ -106,7 +106,8 @@ keymap("n", "<leader>lI", ":LspInstall<cr>", opts)
 keymap("n", "<leader>lm", ":Mason<cr>", opts)
 
 --explore
-keymap("n", "<leader>e", ":Neotree toggle reveal_force_cwd<cr>", opts)
+-- keymap("n", "<leader>e", ":Neotree toggle reveal_force_cwd<cr>", opts) 
+keymap("n", "<leader>e", ":Oil<cr>", opts)
 
 --edit files
 keymap("n", "<leader>sm", ":e ~/.config/nv/lua/core/init.lua<cr>", opts)
