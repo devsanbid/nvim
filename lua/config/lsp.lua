@@ -11,6 +11,23 @@ lspconfig.tsserver.setup({
     },
   },
 })
+lspconfig.lua_ls.setup({
+  settings = {
+    Lua = {
+      runtime = { version = "LuaJIT" },
+      workspace = {
+        checkThirdParty = false,
+        library = {
+          "${3rd}/luv/library",
+          unpack(vim.api.nvim_get_runtime_file("", true)),
+        },
+      },
+      completion = {
+        callSnippet = "Replace",
+      },
+    },
+  },
+})
 vim.diagnostic.config({
   underline = true,
   virtual_text = {
