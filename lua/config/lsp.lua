@@ -115,7 +115,7 @@ cmp.setup({
     -- disable completion in comments
     local context = require("cmp.config.context")
     buftype = vim.api.nvim_buf_get_option(0, "buftype")
-    if buftype == "prompt" then
+    if buftype == "prompt" or buftype == "acwrite" then
       return false
     end
     -- keep command mode completion enabled when cursor is in a comment
