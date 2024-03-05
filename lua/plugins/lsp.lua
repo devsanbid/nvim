@@ -1,10 +1,10 @@
 return {
-  { 'williamboman/mason.nvim' },
-  { 'williamboman/mason-lspconfig.nvim' },
+  { "williamboman/mason.nvim" },
+  { "williamboman/mason-lspconfig.nvim" },
 
   { -- LSP Support
-    'VonHeikemen/lsp-zero.nvim',
-    branch = 'v3.x',
+    "VonHeikemen/lsp-zero.nvim",
+    branch = "v3.x",
     lazy = true,
     config = false,
     keys = {
@@ -14,20 +14,20 @@ return {
   },
 
   { -- LSP Config
-    'neovim/nvim-lspconfig',
+    "neovim/nvim-lspconfig",
     dependencies = {
-      { 'hrsh7th/cmp-nvim-lsp' },
+      { "hrsh7th/cmp-nvim-lsp" },
     },
   },
 
   { -- Autocompletion
-    'hrsh7th/nvim-cmp',
+    "echasnovski/mini.nvim",
+    version = false,
     dependencies = {
-      { 'L3MON4D3/LuaSnip' },
-      { 'saadparwaiz1/cmp_luasnip' },
-      { "rafamadriz/friendly-snippets" }, -- useful snippets
-      { 'SirVer/ultisnips' },
-      { 'quangnguyen30192/cmp-nvim-ultisnips' },
-    }
-  }
+      { "echasnovski/mini.completion", version = false },
+    },
+    config = function()
+      require("mini.completion").setup()
+    end,
+  },
 }
