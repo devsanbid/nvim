@@ -36,7 +36,7 @@ return {
       { "name", "asc" },
     },
 
-    lsp_rename_autosave = true,
+    lsp_file_methods = { autosave_changes = true },
     experimental_watch_for_changes = true,
     keymaps = {
       ["g?"] = "actions.show_help",

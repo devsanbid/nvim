@@ -106,8 +106,19 @@ keymap("n", "<leader>lI", ":LspInstall<cr>", opts)
 keymap("n", "<leader>lm", ":Mason<cr>", opts)
 
 --explore
--- keymap("n", "<leader>e", ":Neotree toggle reveal_force_cwd<cr>", opts) 
-keymap("n", "<leader>e", ":Oil<cr>", opts)
+-- keymap("n", "<leader>e", ":Neotree toggle reveal_force_cwd<cr>", opts)
+local is_oil_open = false
+local function toggle_oil_keybinding()
+  is_oil_open = not is_oil_open
+  if is_oil_open then
+    require("oil").open()
+    print("Oil opened")
+  else
+    require("oil").close()
+    print("Oil closed")
+  end
+end
+keymap("n", "<leader>e", toggle_oil_keybinding, opts)
 
 --edit files
 keymap("n", "<leader>sm", ":e ~/.config/nv/lua/core/init.lua<cr>", opts)
