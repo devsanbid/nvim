@@ -19,15 +19,4 @@ return {
       { "hrsh7th/cmp-nvim-lsp" },
     },
   },
-
-  { -- Autocompletion
-    "echasnovski/mini.nvim",
-    version = false,
-    dependencies = {
-      { "echasnovski/mini.completion", version = false },
-    },
-    config = function()
-      require("mini.completion").setup()
-    end,
-  },
 }
